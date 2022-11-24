@@ -1021,15 +1021,7 @@ var Gokz;
                 if (!isPlaying && _this.saveTickInHash)
                     _this.updateTickHash();
                 if (isPlaying) {
-                    _this.wakeLock = navigator.wakeLock;
-                    if (_this.wakeLock != null) {
-                        _this.wakeLock.request("display");
-                    }
                     _this.cameraMode = SourceUtils.CameraMode.Fixed;
-                }
-                else if (_this.wakeLock != null) {
-                    _this.wakeLock.release("display");
-                    _this.wakeLock = null;
                 }
             });
             _this.cameraModeChanged.addListener(function (mode) {
