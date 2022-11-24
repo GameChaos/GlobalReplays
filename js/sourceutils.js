@@ -963,9 +963,6 @@ var SourceUtils;
         MapViewer.prototype.onKeyDown = function (key) {
             _super.prototype.onKeyDown.call(this, key);
             switch (key) {
-                case WebGame.Key.F:
-                    this.toggleFullscreen();
-                    return true;
                 case WebGame.Key.W:
                 case WebGame.Key.A:
                 case WebGame.Key.S:

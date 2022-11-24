@@ -387,17 +387,6 @@ namespace Gokz {
 
         protected onKeyDown(key: WebGame.Key): boolean {
             switch (key) {
-                case WebGame.Key.X:
-                    this.cameraMode = this.cameraMode === SourceUtils.CameraMode.FreeCam
-                        ? SourceUtils.CameraMode.Fixed : SourceUtils.CameraMode.FreeCam;
-                    
-                    if (this.cameraMode === SourceUtils.CameraMode.FreeCam) {
-                        this.container.requestPointerLock();
-                    }
-                    return true;
-                case WebGame.Key.F:
-                    this.toggleFullscreen();
-                    return true;
                 case WebGame.Key.Space:
                     if (this.replay != null && this.map.isReady()) {
                         this.isPlaying = !this.isPlaying;
