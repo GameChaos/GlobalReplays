@@ -10,6 +10,7 @@
         <script src="js/facepunch.webgame.js"></script>
         <script src="js/sourceutils.js"></script>
         <script src="js/replayviewer.js"></script>
+        <script src="js/main.js"></script>
         <link type="text/css" rel="stylesheet" href="styles/mapviewer.css" />
         <link type="text/css" rel="stylesheet" href="styles/replayviewer.css" />
         <style>
@@ -27,14 +28,14 @@
                 position: absolute;
                 top: 72px;
                 left: 16px;
-                right: 312px;
+                right: 824px;
                 bottom: 16px;
                 background-color: black;
             }
 
             #replay-list {
                 position: absolute;
-                width: 256px;
+                width: 768px;
                 right: 16px;
                 top: 72px;
                 bottom: 16px;
@@ -49,53 +50,35 @@
         </style>
     </head>
     <body>
-    <h2 id="title">GOKZ Replay Viewer</h2>
+    <h2 id="title">GOKZ Global Replay Viewer</h2>
     <div id="map-view">
-        <script>
-            var viewer;
-            window.onload = function() {
-                viewer = new Gokz.ReplayViewer(document.getElementById("map-view"));
-                viewer.showDebugPanel = true;
-                viewer.mapBaseUrl = "resources/maps";
-
-                viewer.replayLoaded.addListener(function(replay) {
-                    var mins = Math.floor(replay.time / 60);
-                    var secs = replay.time - (mins * 60);
-                    var secsString = secs.toFixed(3);
-
-                    var title = replay.playerName
-                        + " - " + replay.mapName
-                        + " - " + mins + ":" + (secsString.indexOf(".") === 1 ? "0" : "") + secsString
-                        + " [" + Gokz.GlobalMode[replay.mode].toUpperCase() + "]"
-                        + " [" + (replay.teleportsUsed === 0 ? "PRO" : "NUB") + "]";
-
-                    document.getElementById("title").innerText = title;
-                    document.title = title;
-                });
-
-                var searchParams = new URLSearchParams(window.location.search);
-                var replayUrl = searchParams.get("replay");
-
-                if (replayUrl != null) {
-                    viewer.isPlaying = true;
-                    viewer.loadReplay(decodeURIComponent(replayUrl));
-                    viewer.animate();
-                } else {
-                    viewer.showMessage("No replay URL provided");
-                }
-            }
-        </script>
+        
     </div>
     <div id="replay-list">
-        <h2>Example Replays</h2>
-        <h3>kz_beginnerblock_go</h2>
-        <ul>
-            <li><a href="?replay=replays/kz_beginnerblock_go/0_KZT_NRM_PRO_1554935482.replay">beginnerblock test</a></li>
-        </ul>
-        <h3>kz_bombu</h2>
-        <ul>
-            <li><a href="?replay=replays/_runs/kz_bombu/0_SKZ_NRM_PRO.replay">test</a></li>
-        </ul>
+        <form>
+            Map name:
+            <input type="text" id="mapNameInput" placeholder="kz_beginnerblock_go">
+        </form>
+        
+        <form>
+            Stage:
+            <input type="number" id="stageInput" placeholder="kz_beginnerblock_go">
+        </form>
+        
+        <select id="tpRun-dropdown" name="TP/Pro">
+            <option value="true">TP</option>
+            <option value="false">Pro</option>
+        </select>
+        
+        <select id="mode-dropdown" name="Mode">
+            <option value="kz_timer">KZTimer</option>
+            <option value="kz_simple">SimpleKZ</option>
+            <option value="kz_vanilla">Vanilla</option>
+        </select>
+        
+        <table id="replay-list-list">
+            
+        </table>
     </div>
     </body>
 </html>

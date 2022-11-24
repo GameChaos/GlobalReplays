@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": false,
+    "declaration": true,
+    "outFile": "js/replayviewer.js",
+    "target": "es5"
+  },
+  "compileOnSave": true,
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
+}
