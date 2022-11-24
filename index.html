@@ -56,7 +56,7 @@
             window.onload = function() {
                 viewer = new Gokz.ReplayViewer(document.getElementById("map-view"));
                 viewer.showDebugPanel = true;
-                viewer.mapBaseUrl = "${MAPSURL}";
+                viewer.mapBaseUrl = "resources/maps/";
 
                 viewer.replayLoaded.addListener(function(replay) {
                     var mins = Math.floor(replay.time / 60);
