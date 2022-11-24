@@ -55,14 +55,16 @@
         
     </div>
     <div id="replay-list">
-        <form>
+        <form onsubmit = "UpdateMaptop(); return false">
             Map name:
             <input type="text" id="mapNameInput" placeholder="kz_beginnerblock_go">
+            <button type="button" onclick="UpdateMaptop()">Submit</button>
         </form>
         
-        <form>
+        <form onsubmit = "UpdateMaptop(); return false">
             Stage:
-            <input type="number" id="stageInput" placeholder="kz_beginnerblock_go">
+            <input type="number" id="stageInput" placeholder="0">
+            <button type="button" onclick="UpdateMaptop()">Submit</button>
         </form>
         
         <select id="tpRun-dropdown" name="TP/Pro">

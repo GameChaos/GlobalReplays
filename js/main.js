@@ -1,14 +1,6 @@
 var viewer;
 
 window.onload = function() {
-	
-	$("#mapNameInput").on("keyup", function (event) {
-		if (event.keyCode === 13)
-		{
-			UpdateMaptop(0);
-		}
-	});
-	
 	var tprunDropDown = document.getElementById("tpRun-dropdown");
 	if (tprunDropDown)
 	{
