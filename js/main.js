@@ -149,13 +149,12 @@ function UpdateMaptopDoCall(callId, mapName, stage)
 			{
 				$("#replay-list-list").append("\
 				<tr>\
-					<td>" + (index + 1) + "</td>\
 					<td>" + CreateReplayLink(replayId) + "</td>\
+					<td>" + (index + 1) + "</td>\
 					<td>" + CreatePlayerProfileLink(data[index].steamid64, data[index].player_name) + "</td>\
 					<td>" + FormatTime(data[index].time) + "</td>\
 					<td>" + data[index].teleports + "</td>\
 					<td>" + new Date(data[index].created_on).toLocaleDateString("en-GB", dateOptions) + "</td>\
-					<td>" + data[index].server_name + "</td>\
 				</tr>")
 			}
 		})
