@@ -6,7 +6,7 @@ window.onload = function() {
 	{
 		$.each(data, function (index, value)
 		{
-			$("#mapNameDatalist").append('<option value="' + value.name + '">' + value.name);
+			$("#mapNameDatalist").append('<option value="' + EscapeHtml(value.name) + '">');
 		})
 	});
 	
@@ -51,6 +51,14 @@ window.onload = function() {
 	}
 }
 
+function EscapeHtml(string)
+{
+	let text = document.createTextNode(string);
+	let temp = document.createElement("temp");
+	temp.appendChild(text);
+	return temp.innerHTML;
+}
+
 function RemoveAllChildrenFromNode(node)
 {
 	while (node.lastChild != null)
@@ -88,7 +96,7 @@ function GetRunMode()
 
 function CreatePlayerProfileLink(steamID, playerName)
 {
-	return "<a href=http://steamcommunity.com/profiles/" + steamID + ">" + playerName + "</a>"
+	return "<a href=\"http://steamcommunity.com/profiles/" + encodeURIComponent(steamID) + "\">" + EscapeHtml(playerName) + "</a>"
 }
 
 function CreateReplayLink(replayId)
@@ -153,15 +161,15 @@ function UpdateMaptopDoCall(callId, mapName, stage)
 		$.each(data, function (index, value)
 		{
 			let replayId = data[index].replay_id;
-			if (replayId != 0)
+			if (replayId !== 0 && !isNaN(replayId))
 			{
 				$("#replay-list-list").append("\
 				<tr>\
 					<td>" + CreateReplayLink(replayId) + "</td>\
 					<td>" + (index + 1) + "</td>\
 					<td>" + CreatePlayerProfileLink(data[index].steamid64, data[index].player_name) + "</td>\
-					<td>" + FormatTime(data[index].time) + "</td>\
-					<td>" + data[index].teleports + "</td>\
+					<td>" + EscapeHtml(FormatTime(data[index].time)) + "</td>\
+					<td>" + EscapeHtml(data[index].teleports) + "</td>\
 					<td>" + new Date(data[index].created_on).toLocaleDateString("en-GB", dateOptions) + "</td>\
 				</tr>")
 			}
