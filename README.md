@@ -1,7 +1,7 @@
 # GlobalReplays
 GOKZ global replay viewer
 
-[Link to current implementation](http://gokzmaptest.site.nfoservers.com/GlobalReplays/)
+[Link to current implementation](http://gokzmaptest.site.nfoservers.com/GlobalReplays/). Everything is supposed to be flat shaded. If you see purple and black textures, make an issue about the map.
 
 # For developers
 
