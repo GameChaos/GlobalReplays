@@ -179,12 +179,12 @@ function UpdateMaptopDoCall(callId, mapName, stage)
 
 function UpdateMaptop()
 {
-	console.log("update");
-	RemoveAllChildrenFromNode(document.getElementById("replay-list-list"))
-	$("#replay-list-list").append("Loading...")
+	console.log("update");;
+	RemoveAllChildrenFromNode(document.getElementById("replay-list-list"));
+	$("#replay-list-list").append("Loading...");
 	
-	let mapName = document.getElementById("mapNameInput").value
-	let stage = document.getElementById("stageInput").value
+	let mapName = document.getElementById("mapNameInput").value;
+	let stage = parseInt(document.getElementById("stageInput").value);
 	
 	if (typeof stage !== "number")
 	{
@@ -196,5 +196,5 @@ function UpdateMaptop()
 	}
 	
 	g_mapTopCallId += 1;
-	UpdateMaptopDoCall(g_mapTopCallId, mapName, stage)
+	UpdateMaptopDoCall(g_mapTopCallId, mapName, stage);
 }
