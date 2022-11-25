@@ -118,36 +118,18 @@ function FormatTime(fTime)
 	return timeString;
 }
 
-function UpdateMaptop()
+var g_mapTopCallId = 0;
+function UpdateMaptopDoCall(callId, mapName, stage)
 {
-	console.log("update");
-	RemoveAllChildrenFromNode(document.getElementById("replay-list-list"))
-	$("#replay-list-list").append("\
-	<tr>\
-		<th>Place</th>\
-		<th></th>\
-		<th>Name</th>\
-		<th>Time</th>\
-		<th>Teleports</th>\
-		<th>Date</th>\
-		<th>Server</th>\
-	</tr>")
-	
-	let mapName = document.getElementById("mapNameInput").value
-	let stage = document.getElementById("stageInput").value
-	
-	if (typeof stage !== "number")
-	{
-		stage = 0;
-	}
-	if (stage < 0)
-	{
-		stage = 0;
-	}
-	
 	$.getJSON("https://kztimerglobal.com/api/v1.0/records/top?map_name="
 		+ mapName + "&tickrate=128&stage=" + stage + "&modes_list=" + GetRunMode() + "&has_teleports=" + GetRunType() + "&limit=100", function (data)
 	{
+		// prevent race condition (is that the right term?)
+		if (callId != g_mapTopCallId)
+		{
+			return;
+		}
+		RemoveAllChildrenFromNode(document.getElementById("replay-list-list"))
 		if (data.length == 0)
 		{
 			return
@@ -178,4 +160,26 @@ function UpdateMaptop()
 			}
 		})
 	})
+}
+
+function UpdateMaptop()
+{
+	console.log("update");
+	RemoveAllChildrenFromNode(document.getElementById("replay-list-list"))
+	$("#replay-list-list").append("Loading...")
+	
+	let mapName = document.getElementById("mapNameInput").value
+	let stage = document.getElementById("stageInput").value
+	
+	if (typeof stage !== "number")
+	{
+		stage = 0;
+	}
+	if (stage < 0)
+	{
+		stage = 0;
+	}
+	
+	g_mapTopCallId += 1;
+	UpdateMaptopDoCall(g_mapTopCallId, mapName, stage)
 }
