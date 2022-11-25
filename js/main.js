@@ -74,8 +74,8 @@ function GetReplayDescription(replay)
 	let secs = replay.time - (mins * 60);
 	let secsString = secs.toFixed(3);
 	
-	let title = replay.playerName
-			+ " - " + replay.mapName
+	let title = EscapeHtml(replay.playerName)
+			+ " - " + EscapeHtml(replay.mapName)
 			+ " - " + mins + ":" + (secsString.indexOf(".") === 1 ? "0" : "") + secsString
 			+ " [" + Gokz.GlobalMode[replay.mode].toUpperCase() + "]"
 			+ " [" + (replay.teleportsUsed === 0 ? "PRO" : "NUB") + "]";
