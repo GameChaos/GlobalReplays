@@ -2,14 +2,14 @@ var viewer;
 
 window.onload = function() {
 	// cache kz maps
-	$.getJSON('https://kztimerglobal.com/api/v2.0/maps?is_validated=true', function (data)
+	$.getJSON('https://kztimerglobal.com/api/v2.0/maps?is_validated=true&limit=9999', function (data)
 	{
 		$.each(data, function (index, value)
 		{
 			$("#mapNameDatalist").append('<option value="' + value.name + '">' + value.name);
 		})
 	});
-
+	
 	var tprunDropDown = document.getElementById("tpRun-dropdown");
 	if (tprunDropDown)
 	{
