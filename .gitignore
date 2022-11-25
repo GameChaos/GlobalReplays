@@ -1,2 +1,3 @@
 *.lnk
 config.sh
+build/
