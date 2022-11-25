@@ -27,7 +27,6 @@ window.onload = function() {
 	}
 	
 	viewer = new Gokz.ReplayViewer(document.getElementById("map-view"));
-	viewer.showDebugPanel = true;
 	viewer.mapBaseUrl = "resources/maps";
 
 	viewer.replayLoaded.addListener(function(replay) {
