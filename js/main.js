@@ -80,7 +80,7 @@ function GetRunMode()
 
 function CreatePlayerProfileLink(steamID, playerName)
 {
-	return "<a href=profile.html?steamid=" + steamID + ">" + playerName + "</a>"
+	return "<a href=http://steamcommunity.com/profiles/" + steamID + ">" + playerName + "</a>"
 }
 
 function CreateReplayLink(replayId)
@@ -121,7 +121,7 @@ function FormatTime(fTime)
 var g_mapTopCallId = 0;
 function UpdateMaptopDoCall(callId, mapName, stage)
 {
-	$.getJSON("https://kztimerglobal.com/api/v1.0/records/top?map_name="
+	$.getJSON("https://kztimerglobal.com/api/v2.0/records/top?map_name="
 		+ mapName + "&tickrate=128&stage=" + stage + "&modes_list=" + GetRunMode() + "&has_teleports=" + GetRunType() + "&limit=100", function (data)
 	{
 		// prevent race condition (is that the right term?)
@@ -151,7 +151,7 @@ function UpdateMaptopDoCall(callId, mapName, stage)
 				<tr>\
 					<td>" + (index + 1) + "</td>\
 					<td>" + CreateReplayLink(replayId) + "</td>\
-					<td>" + CreatePlayerProfileLink(data[index].steam_id, data[index].player_name) + "</td>\
+					<td>" + CreatePlayerProfileLink(data[index].steamid64, data[index].player_name) + "</td>\
 					<td>" + FormatTime(data[index].time) + "</td>\
 					<td>" + data[index].teleports + "</td>\
 					<td>" + new Date(data[index].created_on).toLocaleDateString("en-GB", dateOptions) + "</td>\
