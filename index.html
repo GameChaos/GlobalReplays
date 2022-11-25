@@ -62,6 +62,7 @@
             }
             
             td {
+                max-width: 128px;
                 text-overflow: ellipsis;
                 overflow: hidden;
                 white-space: nowrap;
@@ -76,7 +77,10 @@
         <div id="replay-list">
             <form onsubmit = "UpdateMaptop(); return false" style="float: left;">
                 Map:
-                <input type="text" id="mapNameInput" placeholder="kz_beginnerblock_go" style="width: 128px;">
+                <input list="mapNameDatalist" id="mapNameInput" placeholder="kz_beginnerblock_go" style="width: 128px;">
+                <datalist id="mapNameDatalist">
+                    
+                </datalist>
             </form>
             
             <form onsubmit = "UpdateMaptop(); return false" style="float: left;">
@@ -100,21 +104,22 @@
             <p>
                 <button type="button" onclick="UpdateMaptop()" style="clear: both;">Submit</button>
             </p>
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Place</th>
-                        <th>Name</th>
-                        <th>Time</th>
-                        <th>TPs</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody id="replay-list-list">
-                    
-                </tbody>
-            </table>
+            <div style="height: calc(100% - 120px); overflow:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Place</th>
+                            <th>Name</th>
+                            <th>Time</th>
+                            <th>TPs</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="replay-list-list">
+                    </tbody>
+                </table>
+            </div>
             <div style="position: fixed; bottom: 16px;">
                 For issues like broken maps, please <a href="https://github.com/GameChaos/GlobalReplays/issues">make an issue on github</a>
             </div>

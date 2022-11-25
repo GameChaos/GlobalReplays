@@ -1,6 +1,15 @@
 var viewer;
 
 window.onload = function() {
+	// cache kz maps
+	$.getJSON('https://kztimerglobal.com/api/v2.0/maps?is_validated=true', function (data)
+	{
+		$.each(data, function (index, value)
+		{
+			$("#mapNameDatalist").append('<option value="' + value.name + '">' + value.name);
+		})
+	});
+
 	var tprunDropDown = document.getElementById("tpRun-dropdown");
 	if (tprunDropDown)
 	{
@@ -138,9 +147,9 @@ function UpdateMaptopDoCall(callId, mapName, stage)
 			year: "numeric",
 			month: "2-digit",
 			day: "2-digit",
-			hour: "2-digit",
-			minute: "2-digit",
-			second: "2-digit"
+			// hour: "2-digit",
+			// minute: "2-digit",
+			// second: "2-digit"
 		}
 		$.each(data, function (index, value)
 		{
