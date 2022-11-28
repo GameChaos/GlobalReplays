@@ -41,8 +41,7 @@ window.onload = function() {
 	if (replayUrl != null)
 	{
 		viewer.isPlaying = true;
-		let replayId = decodeURIComponent(replayUrl);
-		viewer.loadReplay("https://kztimerglobal.com/api/v2/records/replay/" + replayId);
+		viewer.loadReplay("https://kztimerglobal.com/api/v2/records/replay/" + encodeURIComponent(replayUrl));
 		viewer.animate();
 	}
 	else
