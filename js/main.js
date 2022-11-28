@@ -185,7 +185,7 @@ function UpdateMaptop()
 	let mapName = document.getElementById("mapNameInput").value;
 	let stage = parseInt(document.getElementById("stageInput").value);
 	
-	if (typeof stage !== "number")
+	if (typeof stage !== "number" || isNaN(stage))
 	{
 		stage = 0;
 	}
