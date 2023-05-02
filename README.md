@@ -1,5 +1,5 @@
 # GlobalReplays
-GOKZ global replay viewer
+GOKZ global replay viewer. Fork of [Metapyziks's replay viewer](https://github.com/Metapyziks/GOKZReplayViewer) modified for global replays.
 
 [Link to current implementation](http://gokzmaptest.site.nfoservers.com/GlobalReplays/). Everything is supposed to be flat shaded. If you see purple and black textures, make an issue about the map.
 
